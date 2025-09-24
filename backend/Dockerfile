@@ -1,20 +1,19 @@
-# Use an official Node.js runtime as a parent image
-FROM node:20-alpine
+# Use official Node.js runtime
+FROM node:18-alpine AS build
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and optionally package-lock.json
 COPY package*.json ./
 
-# Install only production dependencies
-RUN npm ci --only=production
+# Install dependencies (prefer npm ci if lockfile exists)
+RUN if [ -f package-lock.json ]; then npm ci --only=production; else npm install --only=production; fi
 
-# Copy the rest of the application source code
+# Copy the rest of the source code
 COPY . .
 
-# Your app binds to port 3001, so you need to expose it
-EXPOSE 3001
+# Expose app port
+EXPOSE 3000
 
-# Command to run the application
-CMD ["node", "server.js"]
+# Run the app
+CMD ["npm", "start"]
