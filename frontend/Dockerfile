@@ -1,3 +1,4 @@
+# test
 # Stage 1: Build the application
 FROM node:20-alpine AS builder
 
@@ -16,16 +17,3 @@ RUN npm run build
 
 # Stage 2: Serve the application from Nginx
 FROM nginx:stable-alpine
-
-# Copy the built static files from the 'builder' stage
-# This assumes your build output is in the 'dist' folder (common for Vite)
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy our custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80 for the web server
-EXPOSE 80
-
-# Command to start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
