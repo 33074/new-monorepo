@@ -1,32 +1,21 @@
-# -----------------------------
-# Stage 1: Build the JAR
-# -----------------------------
-FROM maven:3.9.11-eclipse-temurin-21 AS build
+# Trigger backend workflow
+# Use an official Node.js runtime as a parent image
+FROM node:20-alpine
 
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy pom.xml and download dependencies (cached)
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Copy project source
-COPY src ./src
+# Install only production dependencies
+RUN npm ci --only=production
 
-# Build JAR file
-RUN mvn clean package -DskipTests
+# Copy the rest of the application source code
+COPY . .
 
-# -----------------------------
-# Stage 2: Run the JAR
-# -----------------------------
-FROM eclipse-temurin:21-jre-ubi9-minimal
+# Your app binds to port 3001, so you need to expose it
+EXPOSE 3001
 
-WORKDIR /app
-
-# Copy JAR from build stage
-COPY --from=build /app/target/*.jar app.jar
-
-# Expose the port your Spring Boot app runs on
-EXPOSE 9091
-
-# Run the JAR
-ENTRYPOINT ["java","-jar","app.jar"]
+# Command to run the application
+CMD ["node", "server.js"]
