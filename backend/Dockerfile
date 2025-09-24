@@ -1,19 +1,24 @@
-# Use official Node.js runtime
-FROM node:18-alpine AS build
-
+# Stage 1: Build the application
+FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy package.json and optionally package-lock.json
-COPY package*.json ./
+# Copy pom.xml and download dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
-# Install dependencies (prefer npm ci if lockfile exists)
-RUN if [ -f package-lock.json ]; then npm ci --only=production; else npm install --only=production; fi
+# Copy source code and build
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the rest of the source code
-COPY . .
+# Stage 2: Run the application
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
 
-# Expose app port
-EXPOSE 3000
+# Copy the jar from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
-# Run the app
-CMD ["npm", "start"]
+# Expose port 8080 (default Spring Boot)
+EXPOSE 8080
+
+# Run the application
+ENTRYPOINT ["java","-jar","app.jar"]
