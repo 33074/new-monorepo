@@ -1,0 +1,17 @@
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/example/foodshare/config/SecurityConfiguration.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/example/foodshare/domain/FoodItem.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/example/foodshare/repository/FoodItemRepository.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/example/foodshare/web/FoodItemController.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/FoodshareBackendApplication.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/domain/Claim.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/domain/Donation.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/domain/DonationStatus.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/domain/FoodCategory.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/domain/FoodItem.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/repository/FoodItemRepository.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/service/FoodItemService.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/service/dto/FoodItemDTO.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/service/impl/FoodItemServiceImpl.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/service/mapper/FoodItemMapper.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/web/FoodItemController.java
+/Users/vineelavallurupalli/Desktop/cicd project/foodwaste-backend/src/main/java/com/foodshare/backend/web/rest/FoodItemResource.java

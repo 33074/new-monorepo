@@ -1,0 +1,2 @@
+DROP USER IF EXISTS 'vineela'@'localhost';
+FLUSH PRIVILEGES;
